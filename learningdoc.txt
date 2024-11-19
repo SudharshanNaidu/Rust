@@ -5,3 +5,42 @@ Rust was designed to deliver the high performance typically associated with C an
 2. Robust support for concurrent programming
 3. A powerful and effective compiler
 
+Why is RUST growing so much in popularity?
+Rust is a statically-typed programming language designed for performance and safety, with a particular emphasis on safe concurrency and memory management. Its syntax is reminiscent of C++, and it is an open-source project initially developed by Mozilla Research.
+One of Rust's standout qualities is its ability to address many of the issues faced by C and C++. While C++ has made significant strides in improving memory safety, many errors still persist. For example, "use after free" errors occur when a program continues to use a pointer after it has been freed, such as calling a lambda function after freeing its reference-captured objects.
+The Borrow Checker:
+-----------------
+The borrow checker is Rust's "secret sauce." It enforces several important properties: all variables must be initialized before use, a value cannot be moved twice, and a value cannot be moved while it is borrowed. The borrow checker is part of the Rust compiler and ensures that references are always valid. This eliminates ambiguity in the code and prevents references to invalid memory locations.
+
+
+Online Editor:
+--------------
+https://play.rust-lang.org/
+
+
+
+Comments:
+==========
+
+format :
+Block comments:
+/* 
+
+*/
+Single line comments:
+//
+
+snippet:
+/* This is comment */
+
+/*
+This is also comment
+*/
+
+// This is a single line comments
+
+/// Document comments are parsed into HTML  library documentation
+
+fn main() {
+    println!("Hello, world!");
+}
