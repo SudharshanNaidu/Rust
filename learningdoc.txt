@@ -1,0 +1,7 @@
+Rust was designed to deliver the high performance typically associated with C and C++, while also prioritizing memory safety. However, there's much more to Rust's appeal beyond just these:
+
+
+1. Efficient handling of large data processing
+2. Robust support for concurrent programming
+3. A powerful and effective compiler
+
