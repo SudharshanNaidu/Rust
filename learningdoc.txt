@@ -44,3 +44,187 @@ This is also comment
 fn main() {
     println!("Hello, world!");
 }
+
+
+Hello World example in Rust:
+================================
+/* 
+This first program in rust
+*/
+
+fn main()
+{
+	// is the logic for the code
+	// ! refers macros functions. This is not actual function
+	println! ("Hello world! Welcome to rust world");
+}
+
+Datatypes in Rust:
+====================
+Datatypes - Specifies what type of value a variable has.
+
+The compiler automatically infers the data type of a variable based on the value assigned to it
+
+How to declare variables in Rust?  : use the let keyword to declare variables in rust.
+
+/* 
+This first program in rust
+*/
+
+fn main()
+{
+    let str_var = "String Variable";
+    let int_var = 240; //(whole numbers)
+    let bool_var = true;
+    let float_var = 240.00;
+    
+    println! ("My str variable - {} and int variable - {} float variable - {}", str_var, int_var, float_var);
+}
+
+Macros:
+==============
+In Rust, macros are a way to extend the language itself. They allow you to define a set of rules for generating code at compile-time, which can then be used to create new functionality or abstractions.
+
+Macros in Rust are similar to macros in other languages, such as C or Lisp. However, Rust's macro system is more powerful and flexible, thanks to its focus on safety and hygiene.
+
+/* 
+This program demonstrates macros in rust
+*/
+
+fn main()
+{
+    // In general, {} will be automatically replaced with any arguments
+    // and stringified
+    
+    println!("{} years old", 36);
+    
+    //named arguments also work
+    
+    println!("{user1} {action} {user2}",
+                user1 = "Mary Lewis",
+                user2 = "Jon wick",
+                action= "Karate kicked");
+}
+
+different macros:
+format!: write formmated text to string
+print! : io::stdout
+println!
+
+eprint!: io::stderr
+eprintln!
+
+Integers in Rust:
+====================
+Integers represents whole numbers.
+Integers are signed and unsigned.
+The size of an intger can be set to arch
+
+/*
+	This code demonstrates Integers demonstration
+*/
+fn main()
+{
+	let total = 4; //default i32
+	let height:u32 = 41;
+	let deduction:i32 = 2-200;
+	
+	println!("The total is {}", total);
+	println!("The height is {} and deduction is {}", height, deduction);
+}
+
+
+Integers Range and overflow in Rust:
+---------------------------------------
+Signed integers can store from -2^(n-1)  to 2^(n-1) - 1  ; n is the number of bits
+
+unsigned integers can range from 0 to 2^(n-1)-1
+
+
+
+Variables in Rust:
+==========================
+Variable naming convention is same as C
+
+datatype declaration is automatic.
+Variables are immutable by default means they are readonly by default.
+
+we can apply mut keyword to make them mutable.
+
+/*
+	This code demonstrates variables
+*/
+fn main()
+{
+	let x = 5;
+	x = x+1;
+	
+	println!("{}", x); //Error:  assign twice to immutable variable
+}
+
+/*
+	This code demonstrates variables
+*/
+fn main()
+{
+	let mut x = 5;
+	x = x+1;
+	
+	println!("{}", x);  // Output is 6
+}
+
+
+
+Constants in Rust:
+===================
+All the characters in constant varibale should be in upper case for proper convention
+
+/*
+	This code demonstrates constants
+*/
+fn main()
+{
+	let x = 5;
+    let x = 6;
+	println!("{}", x);  // print 6
+	
+	const Y:i32 = 5;
+	const Y = 6;
+	
+	println!("{}", y);  // Error: the name `Y` is defined multiple times
+	
+	const y:i32 = 5;
+
+	println!("{}", y);  //warning: constant `y` should have an upper case name
+
+}
+
+
+Strings in Rust:
+=====================
+Strings: Set of characters hard coded into a variable
+
+/*
+	This code demonstrates strings
+*/
+fn main()
+{
+    let bank:&str = "Citi bank";
+    let currency:&str = "Bit coin";
+    
+    println!("Bank is {} and currency is {}", bank, currency);
+    
+    
+    /*
+    In general, when you want to create a string slice that can be used throughout the program,
+    you should use &'static str. When you want to create a string slice that is only valid 
+    within a specific scope, you can use &str.
+    */
+    // Explicitly declare static strings
+    let bank2:&'static str = "Citi bank";
+    let currency2:&'static str = "Bit coin";
+    
+    println!("Bank is {} and currency is {}", bank2, currency2);
+    
+}
+
