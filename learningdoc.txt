@@ -228,3 +228,241 @@ fn main()
     
 }
 
+String Literal  (&str)
+String Object  (String)
+
+String literals are static by default. This ensures that string is valid 
+for the entire duration of the program. you can explicitly declare string as static.
+
+String Object:
+----------------
+fn main()
+{
+    let nothing_in = String::new();
+    println!("{}", nothing_in.len());
+    
+    let great_movie = String::from("Bahubali");
+    println!("{}", great_movie.len());
+
+}
+
+
+String Object Methods:
+------------------------
+new()
+len()
+push()
+push_str()
+to_string()
+replace()
+as_str()
+trim()
+split_whitespace()
+split()
+chars()
+
+
+fn main()
+{
+    let nothing_in = String::new();
+    println!("{}", nothing_in.len()); //0
+    
+    let great_movie = String::from("Bahubali");
+    println!("{}", great_movie.len()); //8
+    
+    // Push Example
+    let mut greeting = String::from("I said ");
+    greeting.push_str("hello");
+    
+    println!("{}",greeting);  // I said hello
+    
+    //convert string lieteral to string object
+    
+    let random_string = "Please make me to an object".to_string();
+    println!("{}", random_string); //Please make me to an object
+    
+    
+}
+
+
+Operators in Rust:
+====================
+Major operators in rust are
+
+Arithmetic:
+-------------
++ 
+-
+* 
+/ - Quotient
+% - Remainder
+
+Bitwise:
+------------
+
+Relational: (returns boolean)
+------------
+>
+<
+>=
+<=
+==
+!=
+
+logical: (returns boolean)
+----------
+&&
+||
+!
+
+Decision Making:
+=====================
+if (statement)
+
+
+
+if(statement)
+.
+.
+else
+
+
+if(statement)
+.
+.
+else if(statement)
+.
+.
+else
+
+
+fn main()
+{
+    let user = "todd";
+    
+    if user.len() == 4 {
+        println!("No characters are 4")
+    }
+    
+    if user.len() == 4 {
+        println!("No characters are 4")
+    } else if user.len() == 3 {
+        println!("No characters are 3")
+    } else {
+        println!("No characters are neither 3 nor 4")
+    }
+    
+}
+
+
+Match Statement(Switch equivalent in c):
+-----------------------------------------
+
+/*
+	This code demonstrates Match statment
+*/
+fn main()
+{
+    let microbiome = "xc12";
+    let bodypart = match microbiome {
+        "xc12" => {println!("Found match for microbiome"); "Tummy Biome" },
+        "mpt1" => "Eyebiome",
+        "ttw6" => "Finger biome",
+        _ => "Unknown"
+    };
+    
+    println!("The biome match is {}", bodypart); 
+    
+}
+
+O/p: Found match for microbiome
+The biome match is Tummy Biome
+
+
+Loops in Rust:
+=================
+Rust has three types of core loops
+1. while
+2. loop
+3. for
+
+/*
+	This code demonstrates loops
+*/
+fn main()
+{
+    // For loop
+    for a in 1..20 { // 20 is not included
+        if a == 2 {
+            continue; // Demonstrates continue statement
+        }
+        print!("{} ",a);
+        if a == 13 {
+            break;
+        }
+    }
+    
+    println!("");
+    
+    // While loop
+    let mut i = 0;
+    while i < 5 {
+        print!("{} ",i);
+        i+=1;
+    }
+    println!("");
+    
+    //loop statment
+    let mut j = 0;
+    loop {
+        j -= 1;
+        print!("j={} ", j);
+        
+        if j == -10 {
+            break;
+        }
+    }
+    
+}
+
+o/p:
+1 3 4 5 6 7 8 9 10 11 12 13 
+0 1 2 3 4 
+j=-1 j=-2 j=-3 j=-4 j=-5 j=-6 j=-7 j=-8 j=-9 j=-10 
+
+
+Functions in Rust:
+====================
+/*
+	This code demonstrates functions
+*/
+
+fn fn_function() {
+    println!("Hello, I am a function"); //Hello, I am a function
+}
+
+//function with return values
+fn fn_return() -> bool {
+    return true;
+}
+
+//parameterized functions
+fn fn_param(x:i32) {
+    println!("The value of x is {}", x);
+}
+
+fn main()
+{
+    println!("I am in main function"); //I am in main function
+    fn_function();
+    println!("returned {}", fn_return()); //returned true
+    fn_param(28);
+    
+}
+
+o/p:
+
+I am in main function
+Hello, I am a function
+returned true
+The value of x is 28
