@@ -466,3 +466,432 @@ I am in main function
 Hello, I am a function
 returned true
 The value of x is 28
+
+
+
+Tuples in Rust:
+=================
+Tuples are compound data types, can store multiple data elements of different types. Tuples have fixed lengths, Once declared, they cant grow or shrink in size
+
+/*
+	This code demonstrates tuples
+*/
+
+fn main()
+{
+    let tuple:(i8, f32, i32) = (2, 3.4, 100);
+    println!("{:?}", tuple);
+    println!("first value {:?}", tuple.0 );
+    
+}
+
+/*
+	This code demonstrates tuples
+*/
+
+fn main()
+{
+    let user2:(i32, bool, &str) = (30,true, "jack");
+    user_data(user2);
+}
+
+fn user_data(x:(i32, bool, &str))
+{
+    let (age, active, name) = x;
+    println!("age : {}, active:{}, name:{}", age, active, name);
+}
+
+Arrays in Rust:
+===================
+Array is a collection of objects of same type T and stored in contiguos memory
+Arrays are static , can't be resized once initialized.
+
+/*
+	This code demonstrates Arrays
+*/
+
+fn main()
+{
+    //let arr:[&str;4] = ["Hello", "Hi", "see", "you"]; //Method 1
+    
+    let mut arr = ["Hello", "Hi", "see", "you"]; //Method 2
+    println!("Arrays contains {:?}", arr);
+    println!("Array total len = {}", arr.len());
+    arr[1] = "test";
+    println!("Arrays contains {:?}", arr);
+    
+    //iter function
+    for value in arr.iter() {
+        println!("{}", value);
+    }
+}
+
+fn user_data(x:(i32, bool, &str))
+{
+    let (age, active, name) = x;
+    println!("age : {}, active:{}, name:{}", age, active, name);
+}
+
+/*
+	This code demonstrates Arrays
+*/
+
+fn main()
+{
+    let mut arr = [12, 2, 3, 2, 4, 5];
+    
+    for i in 0..arr.len() {
+        if arr[i] == 2 {
+            arr[i] = 0;
+        }
+        println!("index is : {} and values is {}",i, arr[i]);
+    }
+    
+    println!("New array {:?}", arr);
+}
+
+
+Stack Vs Heap in the Rust:
+===========================
+
+Ownership in Rust:
+==================
+All the data that is stores in rust has an owner associated to it.
+
+let time = 20 - time is the owner of the value 20
+
+data has only one owner at a time.
+Multiple variable can't point to same memory location at a time.
+Varibles always point to different memory locations.
+
+you can transfer the ownership in rust.
+
+/*
+	This code demonstrates ownership
+*/
+
+fn main()
+{
+    let vector1 = vec![2,4,6];
+    //vector vector1 owns the object in the heap
+    //only single variable owns the heap memory at a given time
+    
+    let vector2 = vector1;
+    
+    println!("{:?}", vector2); //[2, 4, 6]
+    //println!("{:?}", vector1); //error[E0382]: borrow of moved value: `vector1`
+}
+
+Borrowing in Rust - & symbol in rust:
+========================================
+/*
+	This code demonstrates ownership
+*/
+
+fn main()
+{
+    let vector = vec![2,4,6];
+    
+    //display(vector);
+    
+    //println!("{}", vector[1]); //error[E0382]: borrow of moved value: `vector`
+    
+    display(&vector);
+    println!("{}", vector[1]); 
+}
+
+//fn display(x:Vec<i32>) { //Error case
+fn display(x:&Vec<i32>) {
+    println!("{:?}", x);
+}
+
+/*
+	This code demonstrates ownership
+*/
+
+fn main()
+{
+    let mut car:String = String::from("Ferrari");
+    
+    display2(&mut car);
+    
+    println!("car now is {}", car);
+   
+}
+
+fn display2(car:&mut String)
+{
+    println!("car value {}", car);
+    car.push_str("F8 Tributo");
+}
+
+
+Slicing in Rust:
+===================
+/*
+	This code demonstrates slices
+*/
+
+fn main()
+{
+    let game = "Mario Brothers".to_string();
+    println!("len of the game is {}", game.len()); //len of the game is 14
+    
+    let slice = &game[0..5]; 
+    println!("{}", slice); //Mario. 5 is not included
+   
+}
+
+/*
+	This code demonstrates slices
+*/
+
+fn main()
+{
+    let mut nums = [1, 2, 3, 4, 5];
+    
+    println!("{:?}", nums);
+    slice_and_dice(&mut nums[1..3]);
+    println!("{:?}", nums);
+   
+}
+
+fn slice_and_dice(slice:&mut [i32])
+{
+    println!("Length of slice is {}", slice.len());
+    println!("{:?}", slice);
+    slice[0] = 200;
+}
+
+
+Structs in Rust:
+===================
+unlike tuples, in structs we can name each piece of data.
+
+/*
+	This code demonstrates structs
+*/
+
+struct House {
+    door:String,
+    garden:String,
+    property:u32
+}
+
+fn main()
+{
+    let home1 = House {
+        door:String::from("Blue"),
+        garden:String::from("Beatiful"),
+        property:100000
+    };
+    
+    println!("door is {}, garden is {}, property is {}", home1.door, home1.garden, home1.property);
+   
+}
+
+
+Methods are functions which belongs in the scope within a structure.
+We can use impl keyword to declare methods outside of structure block
+
+/*
+	This code demonstrates methods in structs
+*/
+
+struct Triangle {
+    base:u32,
+    height:u32,
+}
+
+impl Triangle{
+    fn find_area(&self) -> u32 {
+        return (self.base * self.height) / 2; 
+    }
+}
+
+fn main()
+{
+    let new_traingle = Triangle {
+        base:10,
+        height:30
+    };
+    
+    println!("Area of tringle is {}", new_traingle.find_area());
+}
+    
+Enums in Rust:
+================
+Enums are set of predefined constans
+
+/*
+	This code demonstrates Enums
+*/
+
+//The derive attribute makes the enum printable
+#[derive(Debug)]
+enum TemperatureGrade {
+    Hot, Cold, Medium
+}
+
+#[derive(Debug)]
+struct City {
+    name:String,
+    temperature:TemperatureGrade
+}
+
+fn main()
+{
+    let c1 = City {
+        name:String::from("Bangalore"),
+        temperature:TemperatureGrade::Cold
+    };
+    
+    let c2 = City {
+        name:String::from("Tirupathi"),
+        temperature:TemperatureGrade::Hot
+    };
+    
+    println!("{:?}", c1);
+    
+    println!("{:?}", c2);
+}
+
+City { name: "Bangalore", temperature: Cold }
+City { name: "Tirupathi", temperature: Hot }
+
+Exercise:
+---------
+/*
+	This code demonstrates Enums
+*/
+
+//The derive attribute makes the enum printable
+#[derive(Debug)]
+enum Shoes {
+    Loafer,
+    Nike,
+    Vans
+}
+
+fn print_shoes(shoe:Shoes) {
+    match shoe {
+        Shoes::Nike => {
+            println!("Great for running");
+        },
+        Shoes::Loafer => {
+            println!("Great for loafing around");
+        },
+        Shoes::Vans => {
+            println!("Great for skate boarding");
+        }
+    }
+    
+}
+
+fn main()
+{
+    print_shoes(Shoes::Nike);
+    print_shoes(Shoes::Loafer);
+    print_shoes(Shoes::Vans);
+}
+
+Modules in Rust:
+=================
+modules helps to split the code into logical units.
+A module is a collection of items:
+functions, structs, traits, impl blocks, and even other modules
+
+multiple modules are compiled into a unit called crate.
+
+Cargo tool is used to manage crates in Rust.
+
+use keyword helps to import a public module
+
+/*
+	This code demonstrates modules
+*/
+
+pub mod songs {
+    pub fn play(name:String) {
+        println!("track selection {}", name);
+    }
+}
+
+use songs::play;
+
+fn main()
+{
+    play("Kissed by a Rose".to_string());
+}
+
+Nested modules in Rust:
+------------------------
+/*
+	This code demonstrates Nested modules
+*/
+
+pub mod tracks {
+    pub mod rock {
+        pub mod indie {
+            pub fn select(name:String) {
+                println!("Track selection is {}", name);
+            }
+        }
+    }
+}
+
+use tracks::rock::indie::select;
+
+fn main()
+{
+    select("Serenade".to_string());
+    select("loyola".to_string());
+    select("love me like you do".to_string());
+}
+
+
+Hashmaps in Rust:
+==================
+Rust's standard collection library has implementation of some of the most common data structure for general purpose
+
+/*
+	This code demonstrates Hashmaps
+*/
+
+use std::collections::HashMap;
+
+fn main()
+{
+    let mut accountInfo = HashMap::new();
+    accountInfo.insert("Jony", "Overdraft");
+    accountInfo.insert("Sally", "Good standing");
+    accountInfo.insert("Super man", "Insufficient funds");
+    
+    println!("The size of the maps is {}", accountInfo.len());  //3
+    
+}
+
+/*
+	This code demonstrates Hashmaps
+*/
+
+
+use std::collections::HashMap;
+
+fn main()
+{
+    let mut bar_drinks = HashMap::new();
+    
+    bar_drinks.insert("vodka", true);
+    bar_drinks.insert("beer", false);
+    bar_drinks.insert("Whiskey", true);
+    
+    println!("{:?}", bar_drinks);
+    
+    bar_drinks.remove(&"Whiskey");
+    
+    println!("{:?}", bar_drinks);
+}
+
+{"Whiskey": true, "vodka": true, "beer": false}
+{"vodka": true, "beer": false}
