@@ -1,0 +1,2 @@
+# Ignore target directories in each project
+**/target/
