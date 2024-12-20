@@ -44,6 +44,9 @@
 */
 
 fn main() {
+    /* ------------------Tuples-----------------
+        Tuples group together values of different types with fixed length
+     */
     let tup = (500, 6.4, 1);
     println!("Tuple: {:?}", tup); // Tuple: (500, 6.4, 1)
     println!("element 0: {}", tup.0); // element 0: 500
@@ -52,4 +55,19 @@ fn main() {
 
     let (x, y, z) = tup;
     println!("x: {}, y: {}, z: {}", x, y, z); // x: 500, y: 6.4, z: 1
+
+    /*  -----------------Arrays-----------------
+        Unlike tuple every element of array should have same type with fixed length 
+    */
+
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let arr = [1, 2, 3, 4, 5]; //array of 5 elements with type i32
+    let a = [3; 5]; // [3, 3, 3, 3, 3] array of 5 elements with value 3
+
+    println!("Array: {:?}", months); // Array: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    println!("arr [0] = {}", arr[0]); // arr [0] = 1
+    println!("a: {:?}", a); // a: [3, 3, 3, 3, 3]
+
+    /* If we access array index outside the array limits, progrm will panic with run time error */
+
 }
